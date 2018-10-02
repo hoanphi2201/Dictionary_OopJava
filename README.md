@@ -9,3 +9,4 @@ khi load dữ liệu từ cơ sở dữ liệu xảy ra hiện tượng dữ li�
 - Ngày 30/9/2018 chia thành các packages nhỏ thêm 2 clas hỗ trợ placehoder và class bodder radius.
 - Hoàn thiện phiên bản Command line cải tiến lần 1 bổ sung hàm Insertfromfile() nhập dữ liệu từ điển từ tệp dictionaries.txt.
   class DictionaryCommandline bổ sung hàm showAllwords() in ra tất cả các từ trong danh sách.
+- Hoàn thành phiên bản Command line cải tiến lần 2 có chức năng thêm, sửa, xóa dữ liệu bằng dòng lệnh. Bổ sung hàm dictionarySearcher() có chức năng tìm kiếm các từ và hàm dictionaryExportToFile() xuất dữ liệu ra file.
