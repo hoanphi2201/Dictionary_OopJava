@@ -11,3 +11,4 @@ cloudy	trời nhiều mây
 hello	xin chào
 hi	xin chào
 no	Không
+know	biết

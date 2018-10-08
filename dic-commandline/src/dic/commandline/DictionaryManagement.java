@@ -11,20 +11,19 @@ public class DictionaryManagement {
 
     private Scanner sc = new Scanner(System.in);
     private static final String fileName = "dictionaries.txt";
-
+    //Function showAllWords
     public void showAllWords() {
         if (!Dictionary.listWord.isEmpty()) {
             System.out.printf("%-4s%c%-20s%c%-20s\n", "STT", '|', "English", '|', "Vietnamese");
             int i = 1;
-            for (Word ele
-                    : Dictionary.listWord) {
+            for (Word ele : Dictionary.listWord) {
                 System.out.printf("%-5d", i);
                 ele.printWord();
                 i++;
             }
         }
     }
-
+    //Function insertFromCommandline
     public void insertFromCommandline() {
         System.out.println("---------Thêm từ vào từ điển---------");
         System.out.print("Nhập số lượng từ muốn thêm: ");
@@ -35,8 +34,7 @@ public class DictionaryManagement {
             String spel = sc.nextLine();
             
             boolean check = false;
-            for (Word ele
-                    : Dictionary.listWord) {
+            for (Word ele : Dictionary.listWord) {
                 if (ele.getWord_taget().equals(spel.trim())) {
                     System.out.println("Từ " + spel + " đã có trong từ điển!! Nhập lại...");
                     check = true;
@@ -85,8 +83,7 @@ public class DictionaryManagement {
         System.out.println("-----------LOOK UP------------");
         System.out.print("Enter word: ");
         String wordLookup = sc.nextLine();
-        for (Word ele
-                : Dictionary.listWord) {
+        for (Word ele : Dictionary.listWord) {
             if (ele.getWord_taget().equals(wordLookup)) {
                 System.out.println("Lookup Success!");
                 System.out.print("Your word is: ");
@@ -102,11 +99,8 @@ public class DictionaryManagement {
         System.out.println("----Tìm kiếm từ tiếng anh----");
         System.out.print("Nhập từ cần tìm: ");
         String wordSearch = sc.nextLine();
-
         ArrayList<Word> listWordSearch = new ArrayList<>();
-
-        for (Word ele
-                : Dictionary.listWord) {
+        for (Word ele : Dictionary.listWord) {
             if (ele.getWord_taget().indexOf(wordSearch) == 0) {
                 listWordSearch.add(ele);
             }

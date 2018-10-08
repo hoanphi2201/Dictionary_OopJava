@@ -5,9 +5,6 @@ public class Word {
     private String word_taget;
     private String word_explain;
 
-    public Word() {
-    }
-
     public Word(String word_taget, String word_explain) {
         this.word_taget = word_taget;
         this.word_explain = word_explain;

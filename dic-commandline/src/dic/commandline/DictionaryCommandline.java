@@ -11,24 +11,21 @@ public class DictionaryCommandline {
     public void dictionaryAdvanced() {
 
     }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         DictionaryManagement DicMana = new DictionaryManagement();
         DicMana.insertFromFile();
-
         int option;
         do {
-            System.out.println("---------------------------------");
-            System.out.println("-------Từ điển Anh - Việt--------");
-            System.out.println("----------Nhập lựa chọn----------");
+            System.out.println("---------Từ điển Anh - Việt----------");
+            System.out.println("------------Nhập lựa chọn------------");
             System.out.println("1. Tra từ");
             System.out.println("2. Thêm từ");
             System.out.println("3. Sửa từ");
             System.out.println("4. Xóa từ");
             System.out.println("5. In tất cả các từ trong từ điển");
             System.out.println("6. Kết thúc");
-            System.out.println("---------------------------------");
+            System.out.println("-------------------------------------");
             option = sc.nextInt();
 
             switch (option) {
