@@ -1,7 +1,6 @@
 # Dictionary_OopJava
 Demo bài tập lớn </br>
 video demo app Dictionary - 24/9/2018 <a href="https://youtu.be/QikSkKiKPYo">Click here</a></br>
-video demo game runaway robot - 23/9/2018 <a href="https://youtu.be/N1iF3Z4SXVU">Click here</a></br>
 - Ngày 24/9/2018 hoàn thiện phiên bản Command line cải tiến lần 1 bổ sung hàm Insertfromfile() nhập dữ liệu từ điển từ tệp dictionaries.txt.
 - Ngày 25/9/2018 hoàn thành phiên bản Command line cải tiến lần 2 có chức năng thêm, sửa, xóa dữ liệu bằng dòng lệnh. Bổ sung hàm dictionarySearcher() có chức năng tìm kiếm các từ và hàm dictionaryExportToFile() xuất dữ liệu ra file.class DictionaryCommandline bổ sung hàm showAllwords() in ra tất cả các từ trong danh sách.
 - Ngày 26/9/2018 lên giao diện ứng dụng cơ bản bằng javaswing
