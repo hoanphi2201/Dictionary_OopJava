@@ -12,5 +12,5 @@ khi load dữ liệu từ cơ sở dữ liệu xảy ra hiện tượng dữ li�
 - Ngày 2/10/2018 fix chức năng khi người dùng đang ở chế độ tìm kiếm và sửa từ thì sau đó phải query đến đúng từ đó load ra hiển thị trên list
 - 4/10/2018 thêm chức năng xem lịch sử những từ đã xem <= 50 từ
 
-Tích hợp cơ sở dữ liệu bằng mysql để lưu trữ từ điển Anh - Việt thay load từ file txt
+- Tích hợp cơ sở dữ liệu bằng mysql để lưu trữ từ điển Anh - Việt thay load từ file txt
 - Tích hợp sử dụng API google translate cơ bản để tra từ, dịch đoạn văn tiếng Anh
