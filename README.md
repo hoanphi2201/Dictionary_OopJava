@@ -14,6 +14,5 @@ khi load dữ liệu từ cơ sở dữ liệu xảy ra hiện tượng dữ li�
 - Ngày 30/9/2018 sửa được chức năng khi người dùng thêm sửa 1 từ xong thì cho selected vào chính phần tử đó để cho người dùng biết vừa thêm sửa cái nào, khi thêm mà không ở cuối thì thêm xong cho chạy xuống cuối, Xử lý thêm ô textfield khi palcehoder vào thì không cần phải bắt sự kiện mouse click(thêm lớp PlaceHoserTextField).
 - Ngày 1/10/2018 chia thành các packages nhỏ thêm 2 clas hỗ trợ placehoder và class bodder radius. sử dụng database 140000 từ. thao tác replateAll mã HTML
 - Ngày 2/10/2018 fix chức năng khi người dùng đang ở chế độ tìm kiếm và sửa từ thì sau đó phải query đến đúng từ đó load ra hiển thị trên list
-- 4/10/2018 thêm chức năng xem lịch sử những từ đã xem <= 50 từ
-
-
+- 4/10/2018 thêm chức năng xem lịch sử những từ đã xem <= 50 từ 
+- 6/10/2018 tính năng học từ
