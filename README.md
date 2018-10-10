@@ -6,7 +6,7 @@ Video demo app Dictionary - 24/9/2018 <a href="https://youtu.be/QikSkKiKPYo">Cli
 - Ngày 24/9/2018 hoàn thiện phiên bản Command line cải tiến lần 1 bổ sung hàm Insertfromfile() nhập dữ liệu từ điển từ tệp dictionaries.txt.
 - Ngày 25/9/2018 hoàn thành phiên bản Command line cải tiến lần 2 có chức năng thêm, sửa, xóa dữ liệu bằng dòng lệnh. Bổ sung hàm dictionarySearcher() có chức năng tìm kiếm các từ và hàm dictionaryExportToFile() xuất dữ liệu ra file.class DictionaryCommandline bổ sung hàm showAllwords() in ra tất cả các từ trong danh sách.
 - Ngày 25/9/2018 hoàn thiện phiên bản commandline với file txt.
-- Xây dựng khung menu cho người dùng lựa chọn thao tác. 1-7 ngoài khoảng này bắt nhập lại, nếy nhập kí tự không phải số cũng bắt nhập lại
+- Ngày 25/9/2018 Xây dựng khung menu cho người dùng lựa chọn thao tác. 1-7 ngoài khoảng này bắt nhập lại, nếy nhập kí tự không phải số cũng bắt nhập lại
 - Ngày 26/9/2018 lên giao diện ứng dụng cơ bản bằng javaswing
 - Ngày 27/9/2018 tích hợp cơ sở dữ liệu bằng mysql để lưu trữ từ điển Anh - Việt thay load từ file txt. Tích hợp sử dụng API google translate cơ bản để tra từ, dịch đoạn văn tiếng Anh.
 - Ngày 29/9/2018 sửa chức năng thêm sửa xoá và load từ hợp lý với tốc độ nhanh từ database
