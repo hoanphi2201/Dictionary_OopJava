@@ -1,4 +1,5 @@
 # Dictionary_OopJava
+Created by Phí Xuân Hoàn and Nguyễn Trường Giang.
 Demo bài tập lớn </br>
 video demo app Dictionary - 24/9/2018 <a href="https://youtu.be/QikSkKiKPYo">Click here</a></br>
 - Ngày 24/9/2018 hoàn thiện phiên bản Command line cải tiến lần 1 bổ sung hàm Insertfromfile() nhập dữ liệu từ điển từ tệp dictionaries.txt.
