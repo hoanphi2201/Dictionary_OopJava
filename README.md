@@ -1,5 +1,5 @@
 # Dictionary_OopJava
-Created by Phí Xuân Hoàn and Nguyễn Trường Giang.
+Created by Phí Xuân Hoàn(17020759) and Nguyễn Trường Giang(17020706).
 
 Demo bài tập lớn </br>
 Video demo app Dictionary - 24/9/2018 <a href="https://youtu.be/QikSkKiKPYo">Click here</a></br>
