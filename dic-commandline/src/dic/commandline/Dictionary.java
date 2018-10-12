@@ -1,7 +1,10 @@
 package dic.commandline;
 
 import java.util.ArrayList;
-
+/**
+ *
+ * @author GotTheRuns
+ */
 public class Dictionary {
-    static ArrayList<Word> listWord = new ArrayList<>();
+    public static ArrayList<Word> listWord = new ArrayList<>();
 }

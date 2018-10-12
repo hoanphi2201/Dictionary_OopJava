@@ -1,53 +1,66 @@
 package dic.commandline;
 
-import java.util.*;
+import java.io.IOException;
+import java.util.Scanner;
 
+/**
+ *
+ * @author GotTheRuns
+ */
 public class DictionaryCommandline {
 
-    public void dictionaryBasic() {
-
-    }
-
-    public void dictionaryAdvanced() {
-
-    }
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        DictionaryManagement DicMana = new DictionaryManagement();
-        DicMana.insertFromFile();
-        int option;
+        DictionaryManagement DicManagement = new DictionaryManagement();
+        Scanner scan = new Scanner(System.in);
+        DicManagement.insertFromFile();
+        int op;
         do {
-            System.out.println("---------Từ điển Anh - Việt----------");
-            System.out.println("------------Nhập lựa chọn------------");
-            System.out.println("1. Tra từ");
-            System.out.println("2. Thêm từ");
-            System.out.println("3. Sửa từ");
-            System.out.println("4. Xóa từ");
-            System.out.println("5. In tất cả các từ trong từ điển");
-            System.out.println("6. Kết thúc");
-            System.out.println("-------------------------------------");
-            option = sc.nextInt();
-
-            switch (option) {
+            System.out.println("--------- Welcome to Englidh - Vietnamese dictionary ----------");
+            System.out.println("---------------- v0.1 GotTheRuns (Hoan - Giang) ---------------");
+            System.out.println("1. Searcher ");
+            System.out.println("2. Look up ");
+            System.out.println("3. Insert word ");
+            System.out.println("4. Edit word ");
+            System.out.println("5. Delete word ");
+            System.out.println("6. Show all word ");
+            System.out.println("7. End program");
+            System.out.println("--------------------------------------------------------------");
+            do {
+                System.out.println("Enter option (1 - 7): ");
+                op = DicManagement.checkNumber();
+                if (op < 1 || op > 7) {
+                    System.out.println("Option not found ! check again ...");
+                }
+            } while (op < 1 || op > 7);
+            switch (op) {
                 case 1:
-                    DicMana.dictionarySearcher();
+                    DicManagement.dictionarySearcher();
                     break;
                 case 2:
-                    DicMana.insertFromCommandline();
+                    DicManagement.dictionaryLookup();
                     break;
                 case 3:
-                    DicMana.editWordInDic();
+                    DicManagement.insertFromCommandline();
                     break;
                 case 4:
-                    DicMana.deleteWordInDic();
+                    DicManagement.editWordInDictionary();
                     break;
                 case 5:
-                    DicMana.showAllWords();
+                    DicManagement.deleteWordInDictionary();
                     break;
+                case 6:
+                    DicManagement.showAllWords();
+                    break;
+                case 7:
+                    System.out.println("You want end program ? (Y/N)?");
+                    char option = scan.next().charAt(0);
+                    if (option == 'Y' || option == 'y') {
+                        return;
+                    } 
             }
-            DicMana.dictionaryExportToFile();
+            DicManagement.dictionaryExportToFile();
 
-        } while (option >= 1 && option <= 5);
+        } while (op >= 1 && op <= 7);
     }
 
 }
