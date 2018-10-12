@@ -1,90 +1,178 @@
 package dic.commandline;
 
-/**
- *
- * @author Nguyễn Giang
- */
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+/**
+ *
+ * @author GotTheRuns
+ */
 public class DictionaryManagement {
-
-    private Scanner sc = new Scanner(System.in);
+    private final Scanner scan = new Scanner(System.in);
     private static final String fileName = "dictionaries.txt";
+    // FUNCTION check enter integer (not string) use regex
+    public int checkNumber(){
+        boolean flag = false;
+        int num = 0;
+        do {
+            String str = scan.nextLine();
+            if (str.equals("") == false) {
+                Pattern pattern = Pattern.compile("\\d*");
+                Matcher matcher = pattern.matcher(str);
+                if (matcher.matches()) {
+                    num = Integer.parseInt(str);
+                    flag = true;
+                } else {
+                    System.out.println("Is not a number ! enter again: ");
+                }
+            }
 
-    //Function showAllWords
+        } while (flag == false);
+        return num;
+    }
+    //FUNCTION showAllWords
     public void showAllWords() {
         if (!Dictionary.listWord.isEmpty()) {
-            System.out.printf("%-4s%c%-20s%c%-20s\n", "STT", '|', "English", '|', "Vietnamese");
-            int i = 1;
-            for (Word ele : Dictionary.listWord) {
-                System.out.printf("%-5d", i);
-                ele.printWord();
-                i++;
+            System.out.printf("%-4s%c%-20s%c%-20s\n", "No", '|', "English", '|', "Vietnamese");
+            for(int i = 0; i < Dictionary.listWord.size(); i++){
+                System.out.printf("%-5d", i + 1);
+                Dictionary.listWord.get(i).printWord();
             }
+        } else {
+            System.out.println("Dictionary is empty !");
         }
     }
-
-    //Function insertFromCommandline
+    // FUNCTION insertFromCommandline
     public void insertFromCommandline() {
-        System.out.println("---------Add word to dictionary---------");
-        System.out.print("Input number of word to add: ");
-        String num = null;
-        boolean ktra = false;
-        while (!ktra) {
-            try {
-                num = sc.next();
-                Integer.parseInt(num);
-                ktra = true;
-            } catch (NumberFormatException e) {
-                System.out.println("It's not a number. Try again: ");
-
-                //num = sc.next();
-            }
-        }
-        sc.nextLine();
-        for (int i = 0; i < Integer.parseInt(num); i++) {
-            System.out.print("Input word target: ");
-            String spel = sc.nextLine();
+        System.out.println("------------------ Add word to dictionary --------------------");
+        System.out.print("Enter the number of words you want to add: ");
+        int num = checkNumber();
+        for (int i = 0; i < num; i++) {
+            System.out.print("Enter word target: ");
+            String target = scan.nextLine();
             boolean check = false;
-            for (Word ele : Dictionary.listWord) {
-                if (ele.getWord_taget().equals(spel.trim())) {
-                    System.out.println("Word '" + spel + "' has exist in dictionary!! Input again...");
+            for (Word elemt : Dictionary.listWord) {
+                if (elemt.getWord_taget().equals(target.trim())) {
+                    System.out.println("Word: " + target + "  has already been in the dictionary !! Enter again ...");
                     check = true;
                     i--;
                     break;
                 }
             }
-
-            if (!check) {
-                System.out.print("Input Vietnamese explain: ");
-                String expl = sc.nextLine();
-                Dictionary.listWord.add(new Word(spel, expl));
+            if(!check) {
+                System.out.print("Enter word explain: ");
+                String explain = scan.nextLine();
+                Dictionary.listWord.add(new Word(target, explain));
             }
-
         }
-        System.out.println("Add successful " + num + " words to dictionary!");
+        System.out.println("Insert success " + num + " word to dictionary !!!");
     }
-
+    //FUNCTION dictionaryLookup
+    public void dictionaryLookup() {
+        System.out.println("-------------------------- LOOK UP ---------------------------");
+        System.out.print("Enter word: ");
+        String wordLookup = scan.nextLine();
+        for (Word elemt : Dictionary.listWord) {
+            if (elemt.getWord_taget().equals(wordLookup)) {
+                System.out.println("Lookup Success !\nYour word is: ");
+                elemt.printWord();
+                return;
+            }
+        }
+        System.out.println("Word Not Found ! ");
+    }
+    // FUNCTION dictionarySearcher
+    public void dictionarySearcher() {
+        System.out.println("------------------------ SEARCHER ----------------------------");
+        System.out.print("Enter word: ");
+        String key = scan.nextLine();
+        ArrayList<Word> listWordSearcher = new ArrayList<>();
+        for (Word elemt : Dictionary.listWord) {
+            if (elemt.getWord_taget().startsWith(key)) {
+                listWordSearcher.add(elemt);
+            }
+        }
+        if (listWordSearcher.isEmpty()) {
+            System.out.println("Word Not Found !");
+        } else {
+            System.out.println("Words start with \"" + key + "\": ");
+            int i = 1;
+            for (Word elemt: listWordSearcher) {
+                System.out.printf("%-4d", i);
+                elemt.printWord();
+                i++;
+            }
+        }
+    }
+    //FUNCTION editWordInDictionary
+    public void editWordInDictionary() {
+        System.out.println("------------------------ EDIT WORD----------------------------");
+        System.out.println("Enter word want edit: ");
+        String editW = scan.nextLine();
+        for (int i = 0; i < Dictionary.listWord.size(); i++) {
+            if (Dictionary.listWord.get(i).getWord_taget().equals(editW)) {
+                System.out.println(editW + "(*): Word found in dictionary !");
+                System.out.print("Enter word replace: ");
+                String spel = scan.nextLine();
+                System.out.print("Enter explain: ");
+                String expl = scan.nextLine();
+                Dictionary.listWord.set(i, new Word(spel, expl));
+                System.out.println("Edit success !!!");
+                return;
+            }
+        }
+        System.out.println("Word Not Found !");
+    }
+    // FUNCTION deleteWordInDictionary
+    public void deleteWordInDictionary() {
+        System.out.println("-----------------------DELETE WORD----------------------------");
+        System.out.println("Enter word want delete: ");
+        String delW = scan.nextLine();
+        for (int i = 0; i < Dictionary.listWord.size(); i++) {
+            if (Dictionary.listWord.get(i).getWord_taget().equals(delW)) {
+                System.out.println(delW + "(*): Word found in dictionary !");
+                System.out.println("You want delete " + delW + " ? (Y/N)?");
+                char option = scan.next().charAt(0);
+                if (option == 'Y' || option == 'y') {
+                    Dictionary.listWord.remove(i);
+                    System.out.println("Delete success !!!");
+                } else if (option == 'N' || option == 'n') {
+                    System.out.println("Delete failed !!!");
+                } else {
+                    System.out.println("Error !!!");
+                }
+                return;
+            }
+        }
+        System.out.println("Word Not Found !");
+    }
+    //FUNCTION insertFromFile
     public void insertFromFile() {
         BufferedReader br = null;
-
         try {
             br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"));
             String line = br.readLine();;
-
             while (line != null) {
-
                 if (line.indexOf("\t") == -1) {
                     line = br.readLine();
                     continue;
                 }
-                Word w = new Word(line);
+                String tag = line.substring(0, line.indexOf("\t"));
+                String exp= line.substring(line.indexOf("\t") + 1);
+                Word w = new Word(tag, exp);
                 Dictionary.listWord.add(w);
                 line = br.readLine();
             }
-
             br.close();
         } catch (FileNotFoundException | UnsupportedEncodingException ex) {
             System.out.println("Error " + ex);
@@ -92,90 +180,7 @@ public class DictionaryManagement {
             System.out.println("Error " + ex);
         }
     }
-
-    public void dictionaryLookup() {
-        System.out.println("-----------LOOK UP------------");
-        System.out.print("Enter word: ");
-        String wordLookup = sc.nextLine();
-        for (Word ele : Dictionary.listWord) {
-            if (ele.getWord_taget().equals(wordLookup)) {
-                System.out.println("Lookup Success!");
-                System.out.print("Your word is: ");
-                ele.printWord();
-                return;
-            }
-        }
-        System.out.println("Word Not Found!");
-    }
-
-    public void dictionarySearcher() {
-        sc = new Scanner(System.in);
-        System.out.println("----Search relative----");
-        System.out.print("Input word: ");
-        String wordSearch = sc.nextLine();
-        ArrayList<Word> listWordSearch = new ArrayList<>();
-        for (Word ele : Dictionary.listWord) {
-            if (ele.getWord_taget().indexOf(wordSearch) == 0) {
-                listWordSearch.add(ele);
-            }
-        }
-
-        if (listWordSearch.isEmpty()) {
-            System.out.println("Not exist in dictionary !!!");
-        } else {
-            System.out.println("Words start with \"" + wordSearch + "\": ");
-            int i = 1;
-            for (Word ele
-                    : listWordSearch) {
-                System.out.printf("%-4d", i);
-                ele.printWord();
-                i++;
-            }
-        }
-    }
-
-    public void editWordInDic() {
-        System.out.println("--------Edit word in dictionary--------");
-        System.out.println("Input edit word: ");
-        String editW = sc.nextLine();
-        for (int i = 0; i < Dictionary.listWord.size(); i++) {
-            if (Dictionary.listWord.get(i).getWord_taget().equals(editW)) {
-                System.out.println("Found '" + editW + "' in dictionary!");
-                System.out.print("Edit word target: ");
-                String spel = sc.nextLine();
-                System.out.print("Edit Vietnamese explain:");
-                String expl = sc.nextLine();
-                Dictionary.listWord.set(i, new Word(spel, expl));
-                System.out.println("Edit successful!!");
-                return;
-            }
-        }
-        System.out.println("Not found: " + editW);
-    }
-
-    public void deleteWordInDic() {
-        System.out.println("--------Delete word in dictionary--------");
-        System.out.println("Input delete word: ");
-        String delW = sc.nextLine();
-        for (int i = 0; i < Dictionary.listWord.size(); i++) {
-            if (Dictionary.listWord.get(i).getWord_taget().equals(delW)) {
-                System.out.println("Found " + delW + " in dictionary!");
-                System.out.println("Do you want to delete '" + delW + "' ? (Y/N)?");
-                char option = sc.next().charAt(0);
-                if (option == 'Y' || option == 'y') {
-                    Dictionary.listWord.remove(i);
-                    System.out.println("Delete successful!!");
-                } else if (option == 'N' || option == 'n') {
-                    System.out.println("Delete failed!!");
-                } else {
-                    System.out.println("Lỗi");
-                }
-                return;
-            }
-        }
-        System.out.println("Not found: " + delW);
-    }
-
+    // FUNCTION dictionaryExportToFile
     public void dictionaryExportToFile() {
         BufferedWriter bw = null;
         try {
