@@ -4,25 +4,25 @@ package dictionary.commandline;
  * @author GotTheRuns
  */
 public class Word {
-    private String word_taget;
+    private String word_target;
     private String word_explain;
     // Constructor
     public Word(String word_taget, String word_explain) {
-        this.word_taget = word_taget;
+        this.word_target = word_taget;
         this.word_explain = word_explain;
     }
     /**
      * @return the word_target
      */
     public String getWord_taget() {
-        return word_taget;
+        return word_target;
     }
 
     /**
-     * @param word_target the word_target to set
+     * @param word_target
      */
     public void setWord_taget(String word_taget) {
-        this.word_taget = word_taget;
+        this.word_target = word_taget;
     }
 
     /**

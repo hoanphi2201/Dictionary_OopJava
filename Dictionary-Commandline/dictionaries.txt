@@ -183,3 +183,4 @@ unnecessary	không cần thiết, không mong muốn
 each other	nhau, lẫn nhau
 penny	số tiền
 bored	chán nản
+hello	xin chào
