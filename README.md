@@ -21,6 +21,6 @@ khi load dữ liệu từ cơ sở dữ liệu xảy ra hiện tượng dữ li�
   + Khi click vào lịch sử thì phải vô hiệu hoá hết các nút thêm sửa xoá tránh gây hiểu nhầm
   + Thêm các phím tắt Command A+D+Y ... tương ứng tính năng
 - 5-6/10/2018 tính năng học từ vựng theo kiểu flash card được chia thành nhiều topic mỗi topic gồm 20 từ. hệ thống đưa ra gợi ý và định nghĩa của từ sau đó gõ từ đóan được vào ô textField và ấn kiểm tra.
-  + hiển thị topic bao gồm 1 ô label hiển thị hình ảnh mô tả topic và 1 ô button để người dùng lựa chọn bài muốn học
-  + khi click vào 1 topic thì 20 từ của topic đó sẽ được lấy ra bao gồm định nghĩa, loại từ, nghĩa, câu ví dụ, nghĩa câu ví dụ, hình ảnh mô tả từ
-  + khi click vào kiểm tra hệ thống sẽ kiểm tra xem từ đó đúng hay không. click next để đến từ tiếp theo vào back để quay lại.
+  + Hiển thị topic bao gồm 1 ô label hiển thị hình ảnh mô tả topic và 1 ô button để người dùng lựa chọn bài muốn học
+  + Khi click vào 1 topic thì 20 từ của topic đó sẽ được lấy ra bao gồm định nghĩa, loại từ, nghĩa, câu ví dụ, nghĩa câu ví dụ, hình ảnh mô tả từ
+  + Khi click vào kiểm tra hệ thống sẽ kiểm tra xem từ đó đúng hay không. click next để đến từ tiếp theo vào back để quay lại.
